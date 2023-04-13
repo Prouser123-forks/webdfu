@@ -29,7 +29,7 @@ jobs:
       # https://github.com/parcel-bundler/parcel/issues/8005#issuecomment-1120149358
       run: NODE_OPTIONS=--no-experimental-fetch npx parcel build index.html --dist-dir ${{github.workspace}}/demo-built
       working-directory: demo
-    - name: uwu
+    - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: demo-built
@@ -48,7 +48,7 @@ jobs:
       with:
         name: demo-built
     - name: Unzip artifact
-      run: mkdir demo-built && cd demo-built && unzip ../demo-built.zip
+      run: mkdir demo-built && cd demo-built && unzip ../demo-built
     - name: Push demo to github pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
