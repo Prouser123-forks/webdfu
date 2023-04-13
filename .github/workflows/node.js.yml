@@ -47,12 +47,12 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: demo-built
-    - name: Unzip artifact
-      run: mkdir demo-built && cd demo-built && unzip ../demo-built
+    - name: list dir
+      run: ls -lh demo-built
     - name: Push demo to github pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: demo-built
+        folder: ${{github.workspace}}/demo-built
         target-folder: demo
     
     
