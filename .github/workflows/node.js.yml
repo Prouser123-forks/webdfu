@@ -27,3 +27,4 @@ jobs:
       run: npm run build --if-present
     - name: Build demo
       run: npx parcel build --dist-dir ${{github.workspace}}/demo-built
+      working-directory: demo
