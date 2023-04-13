@@ -27,7 +27,7 @@ jobs:
       run: npm run build --if-present
     - name: Build demo
       # https://github.com/parcel-bundler/parcel/issues/8005#issuecomment-1120149358
-      run: NODE_OPTIONS=--no-experimental-fetch npx parcel build index.html --dist-dir ${{github.workspace}}/demo-built
+      run: NODE_OPTIONS=--no-experimental-fetch npx parcel build index.html --dist-dir ${{github.workspace}}/demo-built --public-url /webdfu/demo/
       working-directory: demo
     - name: Upload artifact
       uses: actions/upload-artifact@v3
