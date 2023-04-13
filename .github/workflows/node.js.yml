@@ -19,7 +19,7 @@ jobs:
         node-version: latest
         cache: 'npm'
     - name: Install project dependencies
-    - run: npm ci --no-scripts
+      run: npm ci --no-scripts
     - name: Install demo dependencies
       working-directory: demo
       run: npm ci --no-scripts
