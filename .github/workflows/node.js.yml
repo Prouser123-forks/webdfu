@@ -47,6 +47,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: demo-built
+        path: demo-built
     - name: list dir
       run: ls -lh demo-built
     - name: Push demo to github pages
