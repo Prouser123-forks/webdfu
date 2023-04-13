@@ -26,5 +26,32 @@ jobs:
     - name: Build webdfu
       run: npm run build --if-present
     - name: Build demo
+      # https://github.com/parcel-bundler/parcel/issues/8005#issuecomment-1120149358
       run: NODE_OPTIONS=--no-experimental-fetch npx parcel build index.html --dist-dir ${{github.workspace}}/demo-built
       working-directory: demo
+    - name: uwu
+      uses: actions/upload-artifact@v3
+      with:
+        name: demo-built
+        path: ${{github.workspace}}/demo-built
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: demo-built
+    - name: Push demo to github pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: demo-built
+        target-folder: demo
+    
+    
+    
